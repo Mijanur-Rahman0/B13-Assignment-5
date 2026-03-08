@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+
 
     <!-- tailwind + daisyui -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
@@ -20,7 +20,36 @@
 </head>
 
 <body>
-    <h1 class="">hello!</h1>
+    <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-full max-w-sm shrink-0 shadow border p-4 mx-auto mt-5">
+        <!-- <legend class="fieldset-legend">Login</legend> -->
+        <img src="./assets/github-logo.png" alt="" class="mx-auto">
+        <h2 class="font-semibold text-2xl mx-auto">GitHub Issues Tracker</h2>
+        <p class="text-neutral/50 mx-auto">Sign in to manage your issues</p>
+
+
+        <label class="font-medium">Username</label>
+        <input type="email" id="input-name" class="input w-full" placeholder="Enter Username" />
+
+        <label class="font-medium">Password</label>
+        <input type="password" id="input-pass" class="input w-full" placeholder="Enter Password" />
+
+        <button id="login-btn" class="btn btn-primary mt-4">Login</button>
+
+        <div class="flex items-center gap-1">
+            <hr class="flex-1 text-neutral/10">
+            <span>OR</span>
+            <hr class="flex-1 text-neutral/10">
+        </div>
+        <p class="text-center text-neutral/50">Demo Credentials:</p>
+        <div class="text-center">
+            <p class="font-semibold">Username: admin</p>
+            <p class="font-semibold">Password: admin123</p>
+        </div>
+        
+    </fieldset>
+
+
+    <script src="scripts/login.js"></script>
 </body>
 
 </html>
