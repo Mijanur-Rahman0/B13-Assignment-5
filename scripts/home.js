@@ -6,7 +6,7 @@ const allContainer = document.getElementById("all-container");
 const openContainer = document.getElementById("open-container");
 const closedContainer = document.getElementById("closed-container");
 
-const status = document.getElementById("status");
+const statusCount = document.getElementById("status");
 
 const spinner = document.getElementById("loading-spinner");
 
@@ -18,6 +18,7 @@ const hideSpinner = () => {
 };
 
 function switchTab(tab) {
+  currentTab = tab;
   showSpinner();
 
   setTimeout(() => {
@@ -49,15 +50,31 @@ function switchTab(tab) {
       openContainer.classList.add("hidden");
     }
     hideSpinner();
+    issueCount(tab);
   }, 100);
 }
 switchTab(currentTab);
 
+// status count section
+const issueCount = (tab) => {
+  let count = 0;
+  if (tab === "all") {
+    count = document.getElementById("all-container").children.length;
+  } else if (tab === "open") {
+    count = document.getElementById("open-container").children.length;
+  } else if (tab === "closed") {
+    count = document.getElementById("closed-container").children.length;
+  }
+  statusCount.textContent = `${count} Issues`;
+};
+
 const loadAllIssues = () => {
+  showSpinner();
   fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     .then((res) => res.json())
     .then((data) => {
       displayIssue(data.data);
+      issueCount(currentTab);
       hideSpinner();
     });
 };
@@ -67,9 +84,9 @@ const displayIssue = (issues) => {
   const openContainer = document.getElementById("open-container");
   const closedContainer = document.getElementById("closed-container");
 
-  allContainer.innerHTML = '';
-  openContainer.innerHTML = '';
-  closedContainer.innerHTML = '';
+  allContainer.innerHTML = "";
+  openContainer.innerHTML = "";
+  closedContainer.innerHTML = "";
 
   for (const issue of issues) {
     const card = document.createElement("div");
@@ -111,13 +128,12 @@ const displayIssue = (issues) => {
                 </div>
         `;
 
-    
-    if(issue.status === 'open'){
-        openContainer.appendChild(card);
-        allContainer.appendChild(card.cloneNode(true));
-    }else{
-        closedContainer.appendChild(card);
-        allContainer.appendChild(card.cloneNode(true));
+    if (issue.status === "open") {
+      openContainer.appendChild(card);
+      allContainer.appendChild(card.cloneNode(true));
+    } else {
+      closedContainer.appendChild(card);
+      allContainer.appendChild(card.cloneNode(true));
     }
   }
 };
