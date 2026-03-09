@@ -68,6 +68,64 @@ const issueCount = (tab) => {
   statusCount.textContent = `${count} Issues`;
 };
 
+// modal
+const loadIssueCardDetails = async (id) => {
+  const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+  const res = await fetch(url);
+  const details = await res.json();
+  displayIssueCardDetails(details.data);
+};
+const displayIssueCardDetails = (issue) => {
+  console.log(issue);
+  const detailsCard = document.getElementById("details-container");
+  detailsCard.innerHTML = `
+                            <div class="">
+                                <h2 class="text-3xl font-bold text-gray-800 mb-2">${issue.title}</h2>
+                                <div class="flex items-center text-gray-500 text-sm mb-6 gap-2">
+                                    <span
+                                        class="${getStatusColor(issue.status)} text-white px-3 py-1 rounded-full font-medium">${issue.status}</span>
+                                    <span>•</span>
+                                    <span>Opened by <span class="font-semibold text-gray-700">${issue.author}</span></span>
+                                    <span>•</span>
+                                    <span>${issue.createdAt}</span>
+                                </div>
+                                <div class="flex gap-2 pt-1 mb-6">
+                                    <span
+                                        class="flex items-center gap-1 border px-3 rounded-full bg-red-100 text-red-500">
+                                        <img src="./assets/bug.png" alt=""> BUG
+                                    </span>
+                                    <span
+                                        class="flex w-[40%] items-center gap-1 border px-1 rounded-full bg-yellow-100 text-yellow-500">
+                                        <img src="./assets/Vector.png" class="" alt=""> <span class="">HELP
+                                            WANTED</span>
+                                    </span>
+                                </div>
+                                <p class="text-neutral/50">${issue.description}</p>
+                                <div class="bg-gray-50 rounded-xl p-6 flex start-flex gap-x-12 items-center mb-8">
+
+                                    <div>
+
+                                        <p class="text-gray-400 text-sm mb-1">Assignee:</p>
+
+                                        <p class="font-semibold text-gray-800 text-lg">${issue.assignee}</p>
+
+                                    </div>
+
+                                    <div class="text-right">
+
+                                        <p class="text-gray-400 text-sm mb-1">Priority:</p>
+
+                                        <span
+                                            class="${getPriorityColor(issue.priority)} px-4 py-1 rounded-full font-bold text-xs">${issue.priority}</span>
+
+                                    </div>
+                                </div>
+                            </div>
+    
+    `;
+  document.getElementById("issue_card_modal").showModal();
+};
+
 const loadAllIssues = () => {
   showSpinner();
   fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
@@ -91,7 +149,7 @@ const displayIssue = (issues) => {
   for (const issue of issues) {
     const card = document.createElement("div");
     card.innerHTML = `
-        <div class="card bg-base-100 shadow-md border border-base-200 rounded-xl h-full">
+        <div onclick="loadIssueCardDetails(${issue.id})" class="card bg-base-100 shadow-md border border-base-200 rounded-xl h-full ">
                     <div class="h-1 w-full ${getStatusColor(issue.status)} rounded-t-xl"></div>
                     <div class="card-body gap-3">
                         <div class="flex items-center justify-between">
@@ -116,8 +174,8 @@ const displayIssue = (issues) => {
                             <span class="flex items-center gap-1 border px-3 rounded-full bg-red-100 text-red-500">
                                 <img src="./assets/bug.png" alt=""> BUG
                             </span>
-                            <span class="flex sm:w-full items-center gap-1 border px-3 rounded-full bg-yellow-100 text-yellow-500">
-                                <img src="./assets/Vector.png" class="" alt=""> HELP WANTED
+                            <span class="flex w-[40%] sm:w-[50%] md:w-[75%] lg:w-full items-center gap-1 border px-1 rounded-full bg-yellow-100 text-yellow-500">
+                                <img src="./assets/Vector.png" class="" alt=""> <span class="">HELP WANTED</span>
                             </span>
                         </div>
                     </div>
