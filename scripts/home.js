@@ -22,7 +22,7 @@ function switchTab(tab) {
   showSpinner();
 
   setTimeout(() => {
-    console.log(tab);
+    // console.log(tab);
     const tabs = ["all", "open", "closed"];
 
     for (const t of tabs) {
@@ -68,6 +68,35 @@ const issueCount = (tab) => {
   statusCount.textContent = `${count} Issues`;
 };
 
+// search section
+const searchIssues = async (text) => {
+  showSpinner();
+
+  const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${text}`;
+  const res = await fetch(url);
+  const search = await res.json();
+  displayIssue(search.data);
+  // console.log(search);
+  issueCount(currentTab);
+  hideSpinner();
+};
+const searchInput = document.getElementById("search-issue");
+searchInput.addEventListener("input", (event) => {
+  const text = event.target.value.trim();
+
+  if (text.length === 0) {
+    loadAllIssues();
+  } else {
+    searchIssues(text);
+  }
+});
+
+searchInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    searchIssues(event.target.value.trim());
+  }
+});
+
 // modal
 const loadIssueCardDetails = async (id) => {
   const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
@@ -76,7 +105,7 @@ const loadIssueCardDetails = async (id) => {
   displayIssueCardDetails(details.data);
 };
 const displayIssueCardDetails = (issue) => {
-  console.log(issue);
+  //   console.log(issue);
   const detailsCard = document.getElementById("details-container");
   detailsCard.innerHTML = `
                             <div class="">
@@ -225,12 +254,3 @@ const formatDate = (dateString) => {
   const date = new Date(dateString);
   return date.toLocaleDateString();
 };
-
-// const loadIndividualIssue = () => {
-//     fetch('https://phi-lab-server.vercel.app/api/v1/lab/issue/%7Bid%7D')
-//     // fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
-//     .then(res => res.json)
-//     .then(data => console.log(data));
-
-// }
-// loadIndividualIssue();
