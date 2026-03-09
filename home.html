@@ -1,11 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Github Issue Tracker</title>
+    <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <!-- tailwind + daisyui -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        .geist {
+            font-family: "Geist", sans-serif;
+        }
+    </style>
+
 </head>
-<body>
-    <h1>Welcome</h1>
+
+<body class="geist bg-base-100">
+    <header class="">
+        <nav class="navbar bg-base-100 shadow-sm mb-14">
+            <div class="flex-1">
+                <a class="btn btn-ghost text-xl"><img src="./assets/github-logo.png" alt="" class="w-7">GitHub Issues
+                    Tracker</a>
+            </div>
+            <div class="flex gap-2">
+                <div class="relative w-24 md:w-auto">
+                    <i
+                        class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 z-1 text-gray-400"></i>
+                    <input type="text" placeholder="Search issues..." class="input input-bordered w-full pl-10" />
+                </div>
+                <button id="new-issue" class="btn btn-primary">+ New Issue<button>
+            </div>
+        </nav>
+    </header>
+    <main class="w-11/12 mx-auto">
+        <!-- switchTab section -->
+        <section id="switchTab" class="bg-base-100 p-6 rounded-md mb-4 shadow-sm">
+            <button onclick="switchTab('all')" id="tab-all" class="btn btn-primary">All</button>
+            <button onclick="switchTab('open')" id="tab-open" class="btn btn-soft">Open</button>
+            <button onclick="switchTab('closed')" id="tab-closed" class="btn btn-soft">Closed</button>
+        </section>
+
+        <!-- total issues count section -->
+        <section class="">
+            <div id="" class="flex justify-between p-6 rounded-md shadow-sm mb-6">
+                <div id="" class="flex items-center gap-1">
+                    <div id="" class="relative">
+                        <p class=" w-10 rounded-full h-10 bg-primary-content"></p>
+                        <img src="./assets/Aperture.png" alt="" class="absolute top-1 left-1">
+                    </div>
+                    <div class="">
+                        <h3 id="status" class="font-semibold">50 Issues</h3>
+                        <p class="text-neutral/50">Track and manage your project issues</p>
+                    </div>
+                </div>
+                <div id="" class="flex items-center gap-2">
+                    <p class="w-2 h-2 rounded-full bg-green-500"></p>
+                    <p>Open</p>
+                    <p class="w-2 h-2 rounded-full bg-[#A855F7]"></p>
+                    <p>Closed</p>
+                </div>
+            </div>
+        
+            <!-- loading spinner -->
+            <div id="loading-spinner" class="hidden flex justify-center py-10">
+                <span class="loading loading-spinner loading-lg text-primary"></span>
+            </div>
+
+        <!-- All issues section -->
+        <section id="all-issue" class="">
+
+            <div id="all-container" class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+            </div>
+
+
+            <div id="open-container" class="hidden">
+                
+            </div>
+            <div id="closed-container" class="hidden">
+                
+            </div>
+
+        </section>
+        </section>
+
+    </main>
+
+    <script src="./scripts/login.js"></script>
+    <script src="./scripts/home.js"></script>
 </body>
+
 </html>

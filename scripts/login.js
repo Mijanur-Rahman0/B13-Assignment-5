@@ -18,7 +18,6 @@ document.getElementById('login-btn').addEventListener('click', () => {
 
 document.addEventListener('keydown', (e) => {
     if(e.key === 'Enter'){
-        document.getElementById('input-name')
         document.getElementById('login-btn').click();
     }
 });
