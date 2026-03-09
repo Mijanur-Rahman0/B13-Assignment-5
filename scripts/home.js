@@ -13,7 +13,7 @@ const spinner = document.getElementById("loading-spinner");
 const showSpinner = () => {
   spinner.classList.remove("hidden");
 };
-const hideSpiner = () => {
+const hideSpinner = () => {
   spinner.classList.add("hidden");
 };
 
@@ -48,7 +48,7 @@ function switchTab(tab) {
       allContainer.classList.add("hidden");
       openContainer.classList.add("hidden");
     }
-    hideSpiner();
+    hideSpinner();
   }, 100);
 }
 switchTab(currentTab);
@@ -58,14 +58,18 @@ const loadAllIssues = () => {
     .then((res) => res.json())
     .then((data) => {
       displayIssue(data.data);
-      hideSpiner();
+      hideSpinner();
     });
 };
 
 const displayIssue = (issues) => {
   const allContainer = document.getElementById("all-container");
+  const openContainer = document.getElementById("open-container");
+  const closedContainer = document.getElementById("closed-container");
 
   allContainer.innerHTML = '';
+  openContainer.innerHTML = '';
+  closedContainer.innerHTML = '';
 
   for (const issue of issues) {
     const card = document.createElement("div");
@@ -78,7 +82,7 @@ const displayIssue = (issues) => {
                                 ${getStatusIcon(issue.status)}
                             </div>
 
-                            status<div class="btn btn-soft ${getPriorityColor(issue.priority)} rounded-full px-6">
+                            <div class="btn btn-soft ${getPriorityColor(issue.priority)} rounded-full px-6">
                                 ${issue.priority}
                             </div>
                         </div>
@@ -95,7 +99,7 @@ const displayIssue = (issues) => {
                             <span class="flex items-center gap-1 border px-3 rounded-full bg-red-100 text-red-500">
                                 <img src="./assets/bug.png" alt=""> BUG
                             </span>
-                            <span class="flex items-center gap-1 border px-3 rounded-full bg-yellow-100 text-yellow-500">
+                            <span class="flex sm:w-full items-center gap-1 border px-3 rounded-full bg-yellow-100 text-yellow-500">
                                 <img src="./assets/Vector.png" class="" alt=""> HELP WANTED
                             </span>
                         </div>
@@ -107,9 +111,14 @@ const displayIssue = (issues) => {
                 </div>
         `;
 
-    allContainer.appendChild(card);
-
     
+    if(issue.status === 'open'){
+        openContainer.appendChild(card);
+        allContainer.appendChild(card.cloneNode(true));
+    }else{
+        closedContainer.appendChild(card);
+        allContainer.appendChild(card.cloneNode(true));
+    }
   }
 };
 loadAllIssues();

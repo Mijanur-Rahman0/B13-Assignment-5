@@ -31,7 +31,7 @@
 
 <body class="geist bg-base-100">
     <header class="">
-        <nav class="navbar bg-base-100 shadow-sm mb-14">
+        <nav class="navbar max-w-[1600px] mx-auto bg-base-100 shadow-sm mb-14">
             <div class="flex-1">
                 <a class="btn btn-ghost text-xl"><img src="./assets/github-logo.png" alt="" class="w-7">GitHub Issues
                     Tracker</a>
@@ -46,7 +46,7 @@
             </div>
         </nav>
     </header>
-    <main class="w-11/12 mx-auto">
+    <main class="max-w-[1110px] mx-auto">
         <!-- switchTab section -->
         <section id="switchTab" class="bg-base-100 p-6 rounded-md mb-4 shadow-sm">
             <button onclick="switchTab('all')" id="tab-all" class="btn btn-primary">All</button>
@@ -83,15 +83,14 @@
         <!-- All issues section -->
         <section id="all-issue" class="">
 
-            <div id="all-container" class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div id="all-container" class="hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
             </div>
 
-
-            <div id="open-container" class="hidden">
+            <div id="open-container" class="hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 
             </div>
-            <div id="closed-container" class="hidden">
+            <div id="closed-container" class="hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 
             </div>
 
