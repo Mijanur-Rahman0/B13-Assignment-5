@@ -1,128 +1,98 @@
-# 🌟 Welcome To (সহজ সরল সিম্পল) Assignment - 5
+## Q-1. What is the difference between var, let, and const?
 
-# **📅 Deadline For 60 marks:** 9th March, 2026 (11:59 pm ⏱️)  
-#  📅 No Deadline For 50 marks  
-# **📅 Deadline For 30 marks:** Any time after 9th March.
+### var
 
----
+**Definition:** `var` is a function-scoped variable declaration keyword in JavaScript that allows reassignment and redeclaration, and is hoisted with an initial value of `undefined`.
 
-# Assignment-05: GitHub Issues Tracker
+* Function-scoped (not block-scoped)
+* Can be reassigned
+* Can be redeclared in the same scope
+* Hoisted and initialized with `undefined`
+* Older way to declare variables (pre-ES6)
 
+### let
 
-### **API Endpoints:**
-###  **All Issues:** 
-  - https://phi-lab-server.vercel.app/api/v1/lab/issues 
+**Definition:** `let` is a block-scoped variable declaration keyword in JavaScript that allows reassignment but does not allow redeclaration in the same scope, and is hoisted without initialization (Temporal Dead Zone).
 
+* Block-scoped
+* Can be reassigned
+* Cannot be redeclared in the same scope
+* Hoisted but not initialized (Temporal Dead Zone)
+* Introduced in ES6
 
-###  **Single Issue:**
-   - https://phi-lab-server.vercel.app/api/v1/lab/issue/{id}
+### const
 
-   - Example: https://phi-lab-server.vercel.app/api/v1/lab/issue/33
+**Definition:** `const` is a block-scoped variable declaration keyword in JavaScript that does not allow reassignment or redeclaration, must be initialized at declaration, and is hoisted without initialization (Temporal Dead Zone).
 
-
-###  **Search Issue:** https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q={searchText}
-
-   - Example:  https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=notifications
-
-
----
-
-## 📝 Main Requirements
-
-## 🎨 Design Part
-
-## Login Page
-- Create a login page containing a logo, title, and sub-title
-- Below that, there will be 2 inputs, a sign-in button, and a demo credential to sign in. Follow the Figma for this page 
-- Styled as per Figma
-
-## Main Page: 
-
-### Navbar: 
-
-- Navbar with website logo/name on the left
-- Search input and button on the right
-
-### Tab Section like Figma: 
-
-- 3 tab ( All, Open, Closed) at the top of this section.(**All**, **Open**, **Closed**)
-
-- Below the tab, there will be an icon, the issue count, some text on the left, and an open and closed marker on the right
-
-- Responsiveness: The website should be responsive for mobile devices. It is totally up to you. 
-
-
---- 
-
-
-## ⚙️ Functionalities
-- In login page, there will be default admin credentials (username, password). You need to sign in using these credentials.
-
-- Load all issues and display as per Figma
-
-- On clicking on an open or closed tab, it will load the issues data of the related tab and show it in a display-like card in a 4-column layout like Figma. By default, it will show all data 
-
-- Each card shows:
-  - Title
-  - Description
-  - Status 
-  - Author
-  - Priority
-  - Label
-  - CreatedAt
-- Clicking on an issue  card will open a modal and show all the information about that Issue. 
-
-### 🚀 Challenges
-
-
-- Show the card Top border based on their category(open, closed), open card will have Green Boder, closed card will have a purple border on top. 
-
-- Loading spinner on data load
-
-- Show active button on changing category names
-
-- Implement Search Functionality and 8 meaningful github commit.  
-
-- Create a readme file and answer this question on your own. Don’t copy-paste from Google or any AI chatbot. 
-    - 1️⃣ What is the difference between var, let, and const?
-    - 2️⃣ What is the spread operator (...)?
-    - 3️⃣ What is the difference between map(), filter(), and forEach()?
-    - 4️⃣ What is an arrow function?
-    - 5️⃣ What are template literals?
-
+* Block-scoped
+* Cannot be reassigned
+* Cannot be redeclared in the same scope
+* Must be initialized at declaration
+* Hoisted but not initialized (Temporal Dead Zone)
+* Introduced in ES6
 
 ---
 
-## 🛠️ Technology Stack
+## Q-2. What is the spread operator (...)?
 
-- **HTML**
-- **CSS** (Vanilla/Tailwind/DaisyUI)
-- **JavaScript** (Vanilla)
+**Definition:** The spread operator is a JavaScript syntax that expands (spreads) the elements of an iterable (such as an array, string, or object) into individual elements.
 
----
+### Key Uses
 
-## 🔑 Demo Credentials
-
-```text
-Username: admin
-Password: admin123
-```
-
+* Expands array or string elements
+* Copies or merges arrays and objects
+* Passes multiple values where individual arguments are expected
 
 ---
 
-### Optional: 
- - No need to show status: Open, Closed styles On modals. 
- - No Need to show icon on labels 
- - No need to apply styles on Priority 
---- 
+## Q-3. What is the difference between map(), filter(), and forEach()?
 
+### map()
 
-## 📤 What to submit
+**Definition:** `map()` is an array method that creates a new array by applying a transformation function to every element of the original array.
 
-- **GitHub Repository Link:**
-- **Live Site Link:**
+* Creates a new array
+* Transforms every element of the original array
+* Output array length stays the same
+
+### filter()
+
+**Definition:** `filter()` is an array method that creates a new array containing only the elements that satisfy a specified condition.
+
+* Creates a new array
+* Keeps only elements that match a condition
+* Output array length can be smaller
+
+### forEach()
+
+**Definition:** `forEach()` is an array method that executes a provided function once for each array element without returning a new array.
+
+* Does not create a new array
+* Executes a function for each element
+* Used for side effects (e.g., logging, updating external variables)
 
 ---
 
+## Q-4. What is an arrow function?
 
+**Definition:** An arrow function is a shorter syntax for writing functions in JavaScript that uses the `=>` symbol and does not have its own `this`, `arguments`, `super`, or `new.target` bindings.
+
+### Key Characteristics
+
+* Provides concise function syntax
+* Uses lexical `this` (inherits from surrounding scope)
+* Cannot be used as a constructor
+* Does not have its own `arguments` object
+
+---
+
+## Q-5. What are template literals?
+
+**Definition:** Template literals are a JavaScript string syntax that uses backticks ( ` ) to define strings and allows embedded expressions, multi-line strings, and string interpolation.
+
+### Key Features
+
+* Use backticks instead of single or double quotes
+* Support embedding variables and expressions inside strings
+* Allow multi-line string formatting
+* Improve readability of dynamic strings
