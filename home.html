@@ -12,7 +12,6 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
     <!-- tailwind + daisyui -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -38,9 +37,9 @@
             </div>
             <div class="flex gap-2">
                 <div class="relative w-24 md:w-auto">
-                    <i
-                        class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 z-1 text-gray-400"></i>
-                    <input type="text" placeholder="Search issues..." class="input input-bordered w-full pl-10" id="search-issue" />
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 z-1 text-gray-400"></i>
+                    <input type="text" placeholder="Search issues..." class="input input-bordered w-full pl-10"
+                        id="search-issue" />
                 </div>
                 <button id="new-issue" class="btn btn-primary">+ New Issue<button>
             </div>
@@ -85,7 +84,7 @@
 
                 <div id="all-container"
                     class="hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-
+                    
                 </div>
 
                 <div id="open-container"
@@ -102,7 +101,7 @@
                 <dialog id="issue_card_modal" class="modal modal-bottom sm:modal-middle">
                     <div class="modal-box">
                         <div id="details-container" class="space-y-6">
-                            
+
                         </div>
                         <div class="modal-action">
                             <form method="dialog">

@@ -214,7 +214,6 @@ const displayIssue = (issues) => {
                     </div>
                 </div>
         `;
-
     if (issue.status === "open") {
       openContainer.appendChild(card);
       allContainer.appendChild(card.cloneNode(true));
